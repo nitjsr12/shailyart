@@ -1,4 +1,4 @@
-// File: /Users/ravi/Documents/shaily-verma-art-studio-main/app/checkout/page.tsx
+// File: /Users/ravi/Documents/shailyart/app/checkout/page.tsx
 import * as entry from '../../../../app/checkout/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

@@ -38,13 +38,14 @@ export default function About() {
               </div>
             </div>
             
-            <div className="relative">
+            <div className="relative w-full max-w-[600px] mx-auto">
               <Image
-                src="/assets/class-recording.jpg"
+                src="/assets/IMG_0706.jpeg"
                 alt="Shaily Verma"
                 width={600}
                 height={600}
-                className="rounded-2xl shadow-elevated"
+                className="rounded-2xl shadow-elevated w-full h-[700px] object-cover"
+                
               />
               <div className="absolute -bottom-6 -left-6 bg-card p-6 rounded-xl shadow-elevated">
                 <p className="font-display text-3xl font-semibold text-primary">15+</p>
