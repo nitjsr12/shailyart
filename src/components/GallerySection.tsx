@@ -76,7 +76,7 @@ const PaintingCard = ({ painting }: { painting: Painting }) => {
             From ₹{lowestPrice.toLocaleString()}
           </p>
           <span className="font-body text-xs text-muted-foreground">
-            {painting.sizes.length} sizes
+            {painting.sizes.length} size{painting.sizes.length !== 1 ? "s" : ""}
           </span>
         </div>
       </div>

@@ -30,6 +30,8 @@ declare global {
   }
 }
 
+const INDIAN_SHIPPING_COST = 500; // ₹500 for Indian shipping (all paintings)
+
 export default function CheckoutPage() {
   const router = useRouter();
   const { items, totalPrice, clearCart, hasPhysicalItems, hasDigitalItems, addPurchasedCourse } = useCart();
@@ -140,9 +142,12 @@ export default function CheckoutPage() {
         description = `${physicalCount} painting(s)`;
       }
 
+      const shippingCost = hasPhysicalItems ? INDIAN_SHIPPING_COST : 0;
+      const totalWithShipping = totalPrice + shippingCost;
+
       const options = {
         key: "rzp_test_demo",
-        amount: totalPrice * 100,
+        amount: totalWithShipping * 100,
         currency: "INR",
         name: "Shaily Verma Art Studio",
         description: description,
@@ -379,7 +384,7 @@ export default function CheckoutPage() {
                 {hasPhysicalItems && (
                   <div className="flex items-center gap-2 text-muted-foreground">
                     <Truck className="h-5 w-5" />
-                    <span className="font-body text-sm">Free Shipping</span>
+                    <span className="font-body text-sm">Indian Shipping ₹500</span>
                   </div>
                 )}
                 {hasDigitalItems && (
@@ -454,14 +459,16 @@ export default function CheckoutPage() {
                   </div>
                   {hasPhysicalItems && (
                     <div className="flex justify-between font-body text-sm">
-                      <span className="text-muted-foreground">Shipping</span>
-                      <span className="text-green-600">Free</span>
+                      <span className="text-muted-foreground">Shipping (India)</span>
+                      <span>₹{INDIAN_SHIPPING_COST.toLocaleString()}</span>
                     </div>
                   )}
                   <Separator className="my-2" />
                   <div className="flex justify-between font-display text-lg font-semibold">
                     <span>Total</span>
-                    <span className="text-primary">₹{totalPrice.toLocaleString()}</span>
+                    <span className="text-primary">
+                      ₹{(totalPrice + (hasPhysicalItems ? INDIAN_SHIPPING_COST : 0)).toLocaleString()}
+                    </span>
                   </div>
                 </div>
 
@@ -480,7 +487,7 @@ export default function CheckoutPage() {
                   ) : (
                     <>
                       <CreditCard className="h-5 w-5" />
-                      Pay ₹{totalPrice.toLocaleString()}
+                      Pay ₹{(totalPrice + (hasPhysicalItems ? INDIAN_SHIPPING_COST : 0)).toLocaleString()}
                     </>
                   )}
                 </Button>

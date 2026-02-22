@@ -260,7 +260,7 @@ export default function PaintingDetailPage() {
               <div className="grid grid-cols-3 gap-4">
                 <div className="flex flex-col items-center text-center p-3">
                   <Truck className="h-6 w-6 text-primary mb-2" />
-                  <p className="font-body text-xs text-muted-foreground">Free Shipping</p>
+                  <p className="font-body text-xs text-muted-foreground">India Shipping ₹500</p>
                 </div>
                 <div className="flex flex-col items-center text-center p-3">
                   <Shield className="h-6 w-6 text-primary mb-2" />
