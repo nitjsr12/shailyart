@@ -3,24 +3,14 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Eye } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { paintings, categories, Painting } from "@/data/paintings";
-import { useCart } from "@/context/CartContext";
-import { toast } from "sonner";
 
 const PaintingCard = ({ painting }: { painting: Painting }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const { addItem } = useCart();
-  const lowestPrice = Math.min(...painting.sizes.map(s => s.price));
-  const defaultSize = painting.sizes.find(s => s.inStock) || painting.sizes[0];
-
-  const handleAddToCart = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    addItem(painting, defaultSize);
-    toast.success(`"${painting.title}" added to cart!`);
-  };
+  const whatsappNumber = "919876543210";
+  const whatsappMessage = encodeURIComponent(`Hi, I'm interested in ordering the painting "${painting.title}".`);
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
   return (
     <div
@@ -29,7 +19,7 @@ const PaintingCard = ({ painting }: { painting: Painting }) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Image */}
-      <Link href={`/painting/${painting.slug}`}>
+      <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
         <div className="aspect-square overflow-hidden">
           <img
             src={painting.image}
@@ -37,7 +27,7 @@ const PaintingCard = ({ painting }: { painting: Painting }) => {
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
         </div>
-      </Link>
+      </a>
 
       {/* Overlay */}
       <div
@@ -46,39 +36,23 @@ const PaintingCard = ({ painting }: { painting: Painting }) => {
           isHovered ? "opacity-100" : "opacity-0"
         )}
       >
-        <Link href={`/painting/${painting.slug}`} className="pointer-events-auto">
-          <Button variant="secondary" size="icon" className="rounded-full">
-            <Eye className="h-5 w-5" />
+        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="pointer-events-auto">
+          <Button variant="gold" className="rounded-full font-medium">
+            Order on WhatsApp
           </Button>
-        </Link>
-        <Button 
-          variant="gold" 
-          size="icon" 
-          className="rounded-full pointer-events-auto"
-          onClick={handleAddToCart}
-        >
-          <ShoppingCart className="h-5 w-5" />
-        </Button>
+        </a>
       </div>
 
       {/* Info */}
-      <div className="p-4">
-        <span className="font-body text-xs text-muted-foreground uppercase tracking-wider">
-          {painting.category}
-        </span>
-        <Link href={`/painting/${painting.slug}`}>
-          <h3 className="font-display text-lg font-medium text-foreground mt-1 hover:text-primary transition-colors">
-            {painting.title}
-          </h3>
-        </Link>
-        <div className="flex items-center justify-between mt-2">
-          <p className="font-body text-primary font-semibold">
-            From ₹{lowestPrice.toLocaleString()}
-          </p>
-          <span className="font-body text-xs text-muted-foreground">
-            {painting.sizes.length} size{painting.sizes.length !== 1 ? "s" : ""}
-          </span>
-        </div>
+      <div className="p-4 text-center">
+        <h3 className="font-display text-lg font-medium text-foreground mt-1 mb-4">
+          {painting.title}
+        </h3>
+        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+          <Button className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white">
+            Order via WhatsApp
+          </Button>
+        </a>
       </div>
     </div>
   );
