@@ -14,7 +14,11 @@ const classHighlights = [
   { label: "Years Teaching", value: "15+" },
 ];
 
-const ClassesSection = () => {
+const ClassesSection = ({
+  variant = "default",
+}: {
+  variant?: "default" | "classesPage";
+}) => {
   const [formData, setFormData] = useState({
     name: "",
     age: "",
@@ -116,18 +120,51 @@ const ClassesSection = () => {
           </div>
 
           <div className="relative space-y-6">
-            <h3 className="font-display text-2xl font-semibold text-center text-foreground">
-              Student Work & Workshops
-            </h3>
-            <img
-              src="/assets/class-recording.jpg"
-              alt="Art class in session and student work"
-              className="rounded-2xl shadow-elevated w-full object-cover aspect-video"
-            />
-            <p className="text-center text-sm text-muted-foreground flex items-center justify-center gap-2">
-              <ImageIcon className="h-4 w-4" />
-              Glimpses of our students' beautiful creations
-            </p>
+            {variant === "classesPage" ? (
+              <>
+                <h3 className="font-display text-2xl font-semibold text-center text-foreground">
+                  ShailArt classes
+                </h3>
+                <div className="bg-card rounded-2xl p-6 md:p-8 border border-border/50 shadow-soft space-y-5 font-body text-muted-foreground">
+                  <p className="text-foreground font-medium text-center font-display text-lg">
+                    Creativity &amp; professional instruction
+                  </p>
+                  <ul className="space-y-3 text-sm leading-relaxed">
+                    <li className="flex gap-2">
+                      <span className="text-primary shrink-0">✓</span>
+                      Learn drawing, painting &amp; sketching — for all ages
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-primary shrink-0">✓</span>
+                      Canvas workshops and guided studio projects
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-primary shrink-0">✓</span>
+                      Online options and structured weekly topics
+                    </li>
+                  </ul>
+                  <p className="text-center text-sm pt-4 border-t border-border/40 text-foreground">
+                    Enrolment &amp; workshop info:{" "}
+                    <span className="font-medium whitespace-nowrap">WhatsApp +91 99901 73104</span>
+                  </p>
+                </div>
+              </>
+            ) : (
+              <>
+                <h3 className="font-display text-2xl font-semibold text-center text-foreground">
+                  Student Work & Workshops
+                </h3>
+                <img
+                  src="/assets/class-recording.jpg"
+                  alt="Art class in session and student work"
+                  className="rounded-2xl shadow-elevated w-full object-cover aspect-video"
+                />
+                <p className="text-center text-sm text-muted-foreground flex items-center justify-center gap-2">
+                  <ImageIcon className="h-4 w-4" />
+                  Glimpses of our students&apos; beautiful creations
+                </p>
+              </>
+            )}
           </div>
         </div>
 

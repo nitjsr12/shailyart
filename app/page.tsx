@@ -1,7 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import GallerySection from "@/components/GallerySection";
-import RecordingsSection from "@/components/RecordingsSection";
 import CustomPaintingsSection from "@/components/CustomPaintingsSection";
 import ClassesSection from "@/components/ClassesSection";
 import ContactSection from "@/components/ContactSection";
@@ -13,7 +12,6 @@ export default function Home() {
       <Navbar />
       <Hero />
       <GallerySection />
-      <RecordingsSection />
       <CustomPaintingsSection />
       <ClassesSection />
       <ContactSection />

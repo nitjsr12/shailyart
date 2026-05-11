@@ -137,8 +137,8 @@ export const paintings: Painting[] = [
   },
   {
     id: 8,
-    slug: "bhudha-painting ",
-    title: "Bhudha painting ",
+    slug: "buddha-painting",
+    title: "Buddha painting",
     category: "Seascape",
     image: "/assets/IMG_3109.jpeg",
     description: "A stunning seascape capturing the golden hour at the beach, where waves dance under the warm glow of a setting sun.",
