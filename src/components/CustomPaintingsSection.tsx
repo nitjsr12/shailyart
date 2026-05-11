@@ -1,10 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
+
+const WHATSAPP_E164 = "919990173104";
 
 const customPaintings = [
   { id: 1, image: "/assets/painting-3.jpg", title: "Large Abstract Composition" },
@@ -20,11 +23,47 @@ const CustomPaintingsSection = () => {
     type: "order", // 'order' or 'customize'
   });
 
-  const handleSubmit = (e: React.FormEvent, type: "order" | "customize") => {
+  const handleSubmit = (e: React.MouseEvent, type: "customize") => {
     e.preventDefault();
-    // This would connect to email service
-    toast.success(`Your ${type} request has been submitted! We'll contact you soon.`);
+    toast.success(
+      "Your customization request has been submitted! We'll contact you soon."
+    );
     setFormData({ name: "", email: "", phone: "", message: "", type: "order" });
+  };
+
+  const sendFormToWhatsApp = (intent: "order" | "inquiry") => {
+    const name = formData.name.trim();
+    const email = formData.email.trim();
+    const phone = formData.phone.trim();
+    const message = formData.message.trim();
+
+    if (!name && !email && !phone && !message) {
+      toast.error("Please add your details before sending to WhatsApp.");
+      return;
+    }
+
+    const intro =
+      intent === "order"
+        ? "I'd like to place an order for a custom painting. Here are my details:"
+        : "I'd like information about a custom painting commission.";
+
+    const text = [
+      "Hi Shaily Art Gallery,",
+      "",
+      intro,
+      "",
+      `Name: ${name || "—"}`,
+      `Email: ${email || "—"}`,
+      `Phone: ${phone || "—"}`,
+      "",
+      "Details:",
+      message || "—",
+    ].join("\n");
+
+    window.open(
+      `https://wa.me/${WHATSAPP_E164}?text=${encodeURIComponent(text)}`,
+      "_blank"
+    );
   };
 
   return (
@@ -135,22 +174,32 @@ const CustomPaintingsSection = () => {
                 />
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-3 pt-2">
+              <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 pt-2">
                 <Button
                   type="button"
                   variant="hero"
-                  className="flex-1"
-                  onClick={(e) => handleSubmit(e, "order")}
+                  className="flex-1 min-w-[8rem]"
+                  onClick={() => sendFormToWhatsApp("order")}
                 >
                   Order Now
                 </Button>
                 <Button
                   type="button"
                   variant="elegant"
-                  className="flex-1"
+                  className="flex-1 min-w-[8rem]"
                   onClick={(e) => handleSubmit(e, "customize")}
                 >
                   Customize
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="flex-1 min-w-[8rem] border-primary text-primary hover:bg-primary/10"
+                  onClick={() => sendFormToWhatsApp("inquiry")}
+                  aria-label="Send form details on WhatsApp"
+                >
+                  <MessageCircle className="h-4 w-4 mr-2 shrink-0" />
+                  WhatsApp
                 </Button>
               </div>
             </form>

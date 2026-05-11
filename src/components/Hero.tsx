@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 
@@ -34,13 +35,17 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-wrap gap-4 opacity-0 animate-fade-in-up stagger-4">
-            <Button variant="hero" size="xl" className="group">
-              Explore Gallery
-              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+            <Button variant="hero" size="xl" className="group" asChild>
+              <Link href="/gallery">
+                Explore Gallery
+                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Link>
             </Button>
-            <Button variant="elegant" size="xl" className="group">
-              <Play className="h-5 w-5" />
-              Watch Classes
+            <Button variant="elegant" size="xl" className="group" asChild>
+              <Link href="/classes">
+                <Play className="h-5 w-5" />
+                Watch Classes
+              </Link>
             </Button>
           </div>
 

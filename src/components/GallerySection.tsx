@@ -2,13 +2,15 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { Star, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { paintings, categories, Painting } from "@/data/paintings";
+import { paintingGoogleReviewHighlights } from "@/data/googleReviews";
 
 const PaintingCard = ({ painting }: { painting: Painting }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const whatsappNumber = "919876543210";
+  const whatsappNumber = "919990173104";
   const whatsappMessage = encodeURIComponent(`Hi, I'm interested in ordering the painting "${painting.title}".`);
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
@@ -106,6 +108,44 @@ const GallerySection = () => {
           {filteredPaintings.map((painting) => (
             <PaintingCard key={painting.id} painting={painting} />
           ))}
+        </div>
+
+        {/* Google reviews — paintings & canvas */}
+        <div className="mt-20">
+          <h3 className="font-display text-3xl font-semibold text-foreground text-center mb-4">
+            What Google reviewers say about our work
+          </h3>
+          <p className="font-body text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
+            Portraits, large canvas pieces, and learning across mediums — from people who bought or studied with ShailArt.
+          </p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {paintingGoogleReviewHighlights.map((testimonial, index) => (
+              <div
+                key={`${testimonial.name}-${index}`}
+                className="bg-card p-6 rounded-xl shadow-soft hover:shadow-elevated transition-all duration-300 border border-border/40"
+              >
+                <Quote className="h-8 w-8 text-accent/30 mb-4" />
+                <p className="font-body text-foreground mb-4">
+                  "{testimonial.text}"
+                </p>
+                <div className="flex items-center gap-1 mb-3">
+                  {Array.from({ length: testimonial.rating }).map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-accent text-accent" />
+                  ))}
+                </div>
+                <div>
+                  <p className="font-display font-semibold text-foreground">
+                    {testimonial.name}
+                  </p>
+                  <p className="font-body text-sm text-muted-foreground">
+                    {[testimonial.location, "Google review"]
+                      .filter(Boolean)
+                      .join(" · ")}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* View All Button */}

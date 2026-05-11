@@ -2,22 +2,14 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Play, Clock, CheckCircle, ShoppingCart } from "lucide-react";
+import { Play, MessageCircle } from "lucide-react";
 import { courses } from "@/data/courses";
-import { useCart } from "@/context/CartContext";
-import { toast } from "sonner";
-import { cn } from "@/lib/utils";
 
 const RecordingsSection = () => {
-  const { addCourse, purchasedCourses } = useCart();
-
-  const handleAddToCart = (course: typeof courses[0]) => {
-    if (purchasedCourses.includes(course.id)) {
-      toast.info("You already own this course!");
-      return;
-    }
-    addCourse(course);
-    toast.success(`"${course.title}" added to cart!`);
+  const handleWhatsAppRedirect = (courseTitle: string) => {
+    const message = `Hi Shaily Art Gallery,\n\nI am interested in learning more about the course: "${courseTitle}".\n\nPlease share more details.`;
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/919990173104?text=${encodedMessage}`, "_blank");
   };
 
   return (
@@ -33,7 +25,7 @@ const RecordingsSection = () => {
             <span className="text-primary italic">Anywhere</span>
           </h2>
           <p className="font-body text-muted-foreground mt-4 max-w-2xl mx-auto">
-            Master the art of acrylic painting with our comprehensive video courses. 
+            Master the art of acrylic painting with our comprehensive video courses.
             Each set includes multiple painting tutorials with lifetime access.
           </p>
         </div>
@@ -41,8 +33,6 @@ const RecordingsSection = () => {
         {/* Course Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {courses.map((course) => {
-            const isPurchased = purchasedCourses.includes(course.id);
-            
             return (
               <div
                 key={course.id}
@@ -61,19 +51,6 @@ const RecordingsSection = () => {
                       <Play className="h-6 w-6 text-primary ml-1" />
                     </div>
                   </div>
-                  {/* Badge */}
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-medium">
-                      {course.difficulty}
-                    </span>
-                  </div>
-                  {isPurchased && (
-                    <div className="absolute top-4 right-4">
-                      <span className="px-3 py-1 rounded-full bg-green-500 text-background text-xs font-medium flex items-center gap-1">
-                        <CheckCircle className="h-3 w-3" /> Owned
-                      </span>
-                    </div>
-                  )}
                 </Link>
 
                 {/* Content */}
@@ -83,61 +60,18 @@ const RecordingsSection = () => {
                       {course.title}
                     </h3>
                   </Link>
-                  <p className="font-body text-sm text-muted-foreground mt-1">
+                  <p className="font-body text-sm text-muted-foreground mt-1 mb-6">
                     {course.subtitle}
                   </p>
 
-                  {/* Meta */}
-                  <div className="flex items-center gap-4 mt-4 text-sm text-muted-foreground">
-                    <span className="flex items-center gap-1">
-                      <Play className="h-4 w-4" />
-                      {course.lessonsCount} lessons
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Clock className="h-4 w-4" />
-                      {course.totalDuration}
-                    </span>
-                  </div>
-
-                  {/* Features */}
-                  <ul className="mt-4 space-y-2">
-                    {course.features.slice(0, 3).map((feature, index) => (
-                      <li key={index} className="flex items-center gap-2 text-sm">
-                        <CheckCircle className="h-4 w-4 text-accent flex-shrink-0" />
-                        <span className="font-body text-muted-foreground">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Price & CTA */}
-                  <div className="mt-6 flex items-end justify-between">
-                    <div>
-                      {course.originalPrice && (
-                        <p className="font-body text-sm text-muted-foreground line-through">
-                          ₹{course.originalPrice.toLocaleString()}
-                        </p>
-                      )}
-                      <p className="font-display text-2xl font-semibold text-primary">
-                        ₹{course.price.toLocaleString()}
-                      </p>
-                    </div>
-                    {isPurchased ? (
-                      <Button variant="gold" asChild>
-                        <Link href="/my-courses">
-                          <Play className="h-4 w-4" />
-                          Watch Now
-                        </Link>
-                      </Button>
-                    ) : (
-                      <Button 
-                        variant="hero" 
-                        onClick={() => handleAddToCart(course)}
-                      >
-                        <ShoppingCart className="h-4 w-4" />
-                        Add to Cart
-                      </Button>
-                    )}
-                  </div>
+                  <Button
+                    variant="hero"
+                    className="w-full"
+                    onClick={() => handleWhatsAppRedirect(course.title)}
+                  >
+                    <MessageCircle className="h-4 w-4 mr-2" />
+                    Inquire on WhatsApp
+                  </Button>
                 </div>
               </div>
             );
@@ -147,7 +81,7 @@ const RecordingsSection = () => {
         {/* Bottom CTA */}
         <div className="text-center mt-12">
           <p className="font-body text-muted-foreground mb-4">
-            🔒 Secure payment · Instant access · Lifetime availability
+            Connect with us on WhatsApp for more details
           </p>
         </div>
       </div>

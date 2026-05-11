@@ -1,28 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Star, Quote } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Star, Quote, Send, Image as ImageIcon } from "lucide-react";
 
-const testimonials = [
-  {
-    name: "Priya Sharma",
-    location: "Mumbai",
-    text: "Shaily's teaching style is incredibly patient and detailed. I went from complete beginner to creating paintings I'm proud to display!",
-    rating: 5,
-  },
-  {
-    name: "Ankit Patel",
-    location: "Ahmedabad",
-    text: "The lifetime access to recordings is amazing. I can practice at my own pace and rewatch techniques whenever needed.",
-    rating: 5,
-  },
-  {
-    name: "Meera Krishnan",
-    location: "Chennai",
-    text: "Best investment in my creative journey. The step-by-step approach makes even complex techniques feel achievable.",
-    rating: 5,
-  },
-];
+import { homepageGoogleReviewHighlights } from "@/data/googleReviews";
 
 const classHighlights = [
   { label: "Video Lessons", value: "50+" },
@@ -32,20 +15,32 @@ const classHighlights = [
 ];
 
 const ClassesSection = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    age: "",
+    interest: "",
+  });
+
+  const handleWhatsAppRedirect = (e: React.FormEvent) => {
+    e.preventDefault();
+    const message = `Hi Shaily Art Gallery,\n\nI am interested in joining your Art Class.\n\n*Name:* ${formData.name}\n*Age:* ${formData.age}\n*Interested In:* ${formData.interest}\n\nPlease share more details.`;
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/919990173104?text=${encodedMessage}`, "_blank");
+  };
+
   return (
     <section className="py-24 bg-background">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
           <span className="font-body text-sm font-medium text-primary tracking-wider uppercase">
-            Learn with Shaily
+            Art Class - Creativity & Professional
           </span>
           <h2 className="font-display text-4xl md:text-5xl font-semibold text-foreground mt-2">
-            Online Art Classes
+            Learn Drawing, Painting & Sketching
           </h2>
           <p className="font-body text-muted-foreground mt-4 max-w-2xl mx-auto">
-            Join thousands of students who have transformed their artistic abilities 
-            through our comprehensive acrylic painting courses.
+            Classes available for all ages! Join our creative community to learn fundamental and professional art techniques.
           </p>
         </div>
 
@@ -66,36 +61,73 @@ const ClassesSection = () => {
           ))}
         </div>
 
-        {/* Teaching Methodology */}
+        {/* Info & Form */}
         <div className="grid lg:grid-cols-2 gap-12 mb-16 items-center">
           <div>
             <h3 className="font-display text-3xl font-semibold text-foreground mb-6">
-              Our Teaching Approach
+              Join Our Classes
             </h3>
-            <div className="space-y-4 font-body text-muted-foreground">
+            <div className="space-y-4 font-body text-muted-foreground mb-8">
               <p>
-                Every class is designed with beginners in mind, while still offering 
-                depth for intermediate artists looking to refine their skills.
+                Whether you're a complete beginner or an intermediate artist, our classes are tailored to help you refine your skills.
               </p>
               <p>
-                We focus on building strong fundamentals - color theory, brush techniques, 
-                composition - that will serve you across all painting styles.
+                We cover various mediums including canvas painting, sketching, and more.
+                Experience a supportive environment where your creativity can flourish.
               </p>
-              <p>
-                Most importantly, we believe art should be joyful. Our courses create 
-                a supportive environment where mistakes become learning opportunities.
+              <p className="font-medium text-foreground">
+                Fill out the form below to connect with us directly on WhatsApp for enrollment details!
               </p>
             </div>
-            <Button variant="hero" className="mt-8">
-              Start Learning Today
-            </Button>
+
+            {/* Registration Form */}
+            <div className="bg-card p-6 rounded-2xl shadow-soft">
+              <form onSubmit={handleWhatsAppRedirect} className="space-y-4">
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <Input
+                    placeholder="Your Name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    required
+                    className="bg-background"
+                  />
+                  <Input
+                    placeholder="Age"
+                    type="number"
+                    value={formData.age}
+                    onChange={(e) => setFormData({ ...formData, age: e.target.value })}
+                    required
+                    className="bg-background"
+                  />
+                </div>
+                <Input
+                  placeholder="What are you interested in learning?"
+                  value={formData.interest}
+                  onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
+                  required
+                  className="bg-background"
+                />
+                <Button type="submit" variant="hero" className="w-full">
+                  Inquire on WhatsApp
+                  <Send className="h-4 w-4 ml-2" />
+                </Button>
+              </form>
+            </div>
           </div>
-          <div className="relative">
+
+          <div className="relative space-y-6">
+            <h3 className="font-display text-2xl font-semibold text-center text-foreground">
+              Student Work & Workshops
+            </h3>
             <img
               src="/assets/class-recording.jpg"
-              alt="Art class in session"
-              className="rounded-2xl shadow-elevated"
+              alt="Art class in session and student work"
+              className="rounded-2xl shadow-elevated w-full object-cover aspect-video"
             />
+            <p className="text-center text-sm text-muted-foreground flex items-center justify-center gap-2">
+              <ImageIcon className="h-4 w-4" />
+              Glimpses of our students' beautiful creations
+            </p>
           </div>
         </div>
 
@@ -105,7 +137,7 @@ const ClassesSection = () => {
             What Our Students Say
           </h3>
           <div className="grid md:grid-cols-3 gap-6">
-            {testimonials.map((testimonial, index) => (
+            {homepageGoogleReviewHighlights.map((testimonial, index) => (
               <div
                 key={index}
                 className="bg-card p-6 rounded-xl shadow-soft hover:shadow-elevated transition-all duration-300"
@@ -124,7 +156,9 @@ const ClassesSection = () => {
                     {testimonial.name}
                   </p>
                   <p className="font-body text-sm text-muted-foreground">
-                    {testimonial.location}
+                    {[testimonial.location, "Google review"]
+                      .filter(Boolean)
+                      .join(" · ")}
                   </p>
                 </div>
               </div>

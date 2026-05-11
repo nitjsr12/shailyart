@@ -6,6 +6,7 @@ const footerLinks = {
     { name: "Gallery", href: "/gallery" },
     { name: "Classes", href: "/classes" },
     { name: "About", href: "/about" },
+    { name: "Reviews", href: "/reviews" },
     { name: "Contact", href: "/contact" },
   ],
   shop: [
