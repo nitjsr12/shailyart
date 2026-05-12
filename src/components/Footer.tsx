@@ -1,5 +1,8 @@
 import Link from "next/link";
-import { Instagram, Youtube, Facebook, Heart } from "lucide-react";
+import { Instagram } from "lucide-react";
+
+const INSTAGRAM_URL =
+  "https://www.instagram.com/artist.shaily.verma?igsh=a3ViZzhscDl1czV4&utm_source=qr";
 
 const footerLinks = {
   explore: [
@@ -39,22 +42,13 @@ const Footer = () => {
             </p>
             <div className="flex gap-4">
               <a
-                href="#"
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Shaily Verma on Instagram"
                 className="w-10 h-10 rounded-full bg-background/10 hover:bg-background/20 flex items-center justify-center transition-colors"
               >
                 <Instagram className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-background/10 hover:bg-background/20 flex items-center justify-center transition-colors"
-              >
-                <Youtube className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-background/10 hover:bg-background/20 flex items-center justify-center transition-colors"
-              >
-                <Facebook className="h-5 w-5" />
               </a>
             </div>
           </div>
