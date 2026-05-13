@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Star, Quote, Send, Image as ImageIcon } from "lucide-react";
 
 import { homepageGoogleReviewHighlights } from "@/data/googleReviews";
+import { RevealOnScroll } from "@/components/RevealOnScroll";
 
 const classHighlights = [
   { label: "Video Lessons", value: "50+" },
@@ -36,20 +37,23 @@ const ClassesSection = ({
     <section className="py-24 bg-background">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="font-body text-sm font-medium text-primary tracking-wider uppercase">
-            Art Class - Creativity & Professional
-          </span>
-          <h2 className="font-display text-4xl md:text-5xl font-semibold text-foreground mt-2">
-            Learn Drawing, Painting & Sketching
-          </h2>
-          <p className="font-body text-muted-foreground mt-4 max-w-2xl mx-auto">
-            Classes available for all ages! Join our creative community to learn fundamental and professional art techniques.
-          </p>
-        </div>
+        <RevealOnScroll>
+          <div className="text-center mb-16">
+            <span className="font-body text-sm font-medium text-primary tracking-wider uppercase">
+              Art Class - Creativity & Professional
+            </span>
+            <h2 className="font-display text-4xl md:text-5xl font-semibold text-foreground mt-2">
+              Learn Drawing, Painting & Sketching
+            </h2>
+            <p className="font-body text-muted-foreground mt-4 max-w-2xl mx-auto">
+              Classes available for all ages! Join our creative community to learn fundamental and professional art techniques.
+            </p>
+          </div>
+        </RevealOnScroll>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+        <RevealOnScroll delayMs={40}>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
           {classHighlights.map((item, index) => (
             <div
               key={index}
@@ -64,10 +68,12 @@ const ClassesSection = ({
             </div>
           ))}
         </div>
+        </RevealOnScroll>
 
         {/* Info & Form */}
         <div className="grid lg:grid-cols-2 gap-12 mb-16 items-center">
-          <div>
+          <RevealOnScroll delayMs={60}>
+            <div>
             <h3 className="font-display text-3xl font-semibold text-foreground mb-6">
               Join Our Classes
             </h3>
@@ -118,8 +124,10 @@ const ClassesSection = ({
               </form>
             </div>
           </div>
+          </RevealOnScroll>
 
-          <div className="relative space-y-6">
+          <RevealOnScroll delayMs={90}>
+            <div className="relative space-y-6">
             {variant === "classesPage" ? (
               <>
                 <h3 className="font-display text-2xl font-semibold text-center text-foreground">
@@ -157,7 +165,7 @@ const ClassesSection = ({
                 <img
                   src="/assets/class-recording.jpg"
                   alt="Art class in session and student work"
-                  className="rounded-2xl shadow-elevated w-full object-cover aspect-video"
+                  className="rounded-2xl shadow-elevated w-full object-cover aspect-video transition-transform duration-image ease-out hover:scale-[1.02]"
                 />
                 <p className="text-center text-sm text-muted-foreground flex items-center justify-center gap-2">
                   <ImageIcon className="h-4 w-4" />
@@ -166,19 +174,19 @@ const ClassesSection = ({
               </>
             )}
           </div>
+          </RevealOnScroll>
         </div>
 
         {/* Testimonials */}
-        <div>
-          <h3 className="font-display text-3xl font-semibold text-foreground text-center mb-12">
-            What Our Students Say
-          </h3>
-          <div className="grid md:grid-cols-3 gap-6">
-            {homepageGoogleReviewHighlights.map((testimonial, index) => (
-              <div
-                key={index}
-                className="bg-card p-6 rounded-xl shadow-soft hover:shadow-elevated transition-all duration-300"
-              >
+        <RevealOnScroll delayMs={50}>
+          <div>
+            <h3 className="font-display text-3xl font-semibold text-foreground text-center mb-12">
+              What Our Students Say
+            </h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              {homepageGoogleReviewHighlights.map((testimonial, index) => (
+                <RevealOnScroll key={index} delayMs={index * 70}>
+                  <div className="bg-card p-6 rounded-xl shadow-soft hover:shadow-elevated transition-shadow duration-700 ease-out h-full">
                 <Quote className="h-8 w-8 text-accent/30 mb-4" />
                 <p className="font-body text-foreground mb-4">
                   "{testimonial.text}"
@@ -198,10 +206,12 @@ const ClassesSection = ({
                       .join(" · ")}
                   </p>
                 </div>
-              </div>
-            ))}
+                  </div>
+                </RevealOnScroll>
+              ))}
+            </div>
           </div>
-        </div>
+        </RevealOnScroll>
       </div>
     </section>
   );

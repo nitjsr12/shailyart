@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
+import { RevealOnScroll } from "@/components/RevealOnScroll";
 
 const WHATSAPP_E164 = "919990173104";
 
@@ -70,64 +71,72 @@ const CustomPaintingsSection = () => {
     <section className="py-24 bg-secondary/30">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="font-body text-sm font-medium text-primary tracking-wider uppercase">
-            Bespoke Art
-          </span>
-          <h2 className="font-display text-4xl md:text-5xl font-semibold text-foreground mt-2">
-            Custom & Large Format
-          </h2>
-          <p className="font-body text-muted-foreground mt-4 max-w-2xl mx-auto">
-            Commission a unique piece tailored to your vision. Our large format paintings 
-            make stunning statement pieces for homes and offices.
-          </p>
-        </div>
+        <RevealOnScroll>
+          <div className="text-center mb-16">
+            <span className="font-body text-sm font-medium text-primary tracking-wider uppercase">
+              Bespoke Art
+            </span>
+            <h2 className="font-display text-4xl md:text-5xl font-semibold text-foreground mt-2">
+              Custom & Large Format
+            </h2>
+            <p className="font-body text-muted-foreground mt-4 max-w-2xl mx-auto">
+              Commission a unique piece tailored to your vision. Our large format paintings
+              make stunning statement pieces for homes and offices.
+            </p>
+          </div>
+        </RevealOnScroll>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Gallery Preview */}
-          <div>
-            <div className="grid grid-cols-2 gap-4">
-              {customPaintings.map((painting, index) => (
-                <div
-                  key={painting.id}
-                  className={`relative overflow-hidden rounded-xl shadow-soft ${
-                    index === 0 ? "col-span-2 aspect-video" : "aspect-square"
-                  }`}
-                >
-                  <img
-                    src={painting.image}
-                    alt={painting.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
-                  <p className="absolute bottom-4 left-4 font-display text-lg text-background">
-                    {painting.title}
-                  </p>
-                </div>
-              ))}
-              <div className="aspect-square rounded-xl bg-muted flex items-center justify-center">
-                <p className="font-body text-muted-foreground text-center px-4">
-                  + 8 more examples in full gallery
+          <RevealOnScroll delayMs={50}>
+            <div>
+              <div className="grid grid-cols-2 gap-4">
+                {customPaintings.map((painting, index) => (
+                  <RevealOnScroll key={painting.id} delayMs={index * 70}>
+                    <div
+                      className={`group relative overflow-hidden rounded-xl shadow-soft ${
+                        index === 0 ? "col-span-2 aspect-video" : "aspect-square"
+                      }`}
+                    >
+                      <img
+                        src={painting.image}
+                        alt={painting.title}
+                        className="w-full h-full object-cover transition-transform duration-image ease-out group-hover:scale-[1.03]"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent transition-opacity duration-500" />
+                      <p className="absolute bottom-4 left-4 font-display text-lg text-background">
+                        {painting.title}
+                      </p>
+                    </div>
+                  </RevealOnScroll>
+                ))}
+                <RevealOnScroll delayMs={180}>
+                  <div className="aspect-square rounded-xl bg-muted flex items-center justify-center">
+                    <p className="font-body text-muted-foreground text-center px-4">
+                      + 8 more examples in full gallery
+                    </p>
+                  </div>
+                </RevealOnScroll>
+              </div>
+
+              <div className="bg-card p-6 rounded-xl mt-6 shadow-soft transition-shadow duration-500 hover:shadow-elevated">
+                <h3 className="font-display text-xl font-semibold text-foreground mb-2">
+                  Pricing Information
+                </h3>
+                <p className="font-body text-muted-foreground text-sm">
+                  Large format and custom paintings are priced based on size, complexity,
+                  and materials. Contact us for a personalized quote.
                 </p>
               </div>
-            </div>
-
-            <div className="bg-card p-6 rounded-xl mt-6 shadow-soft">
-              <h3 className="font-display text-xl font-semibold text-foreground mb-2">
-                Pricing Information
-              </h3>
-              <p className="font-body text-muted-foreground text-sm">
-                Large format and custom paintings are priced based on size, complexity, 
-                and materials. Contact us for a personalized quote.
-              </p>
-            </div>
           </div>
+          </RevealOnScroll>
 
           {/* Inquiry Form */}
-          <div className="bg-card p-8 rounded-2xl shadow-elevated">
-            <h3 className="font-display text-2xl font-semibold text-foreground mb-6">
-              Request Information
-            </h3>
+          <RevealOnScroll delayMs={100}>
+            <div className="bg-card p-8 rounded-2xl shadow-elevated">
+              <h3 className="font-display text-2xl font-semibold text-foreground mb-6">
+                Request Information
+              </h3>
 
             <form className="space-y-4">
               <div>
@@ -208,6 +217,7 @@ const CustomPaintingsSection = () => {
               We'll respond within 24 hours to discuss your requirements.
             </p>
           </div>
+          </RevealOnScroll>
         </div>
       </div>
     </section>

@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { Mail, Phone, MapPin, Send, Instagram } from "lucide-react";
+import { RevealOnScroll } from "@/components/RevealOnScroll";
 
 const INSTAGRAM_URL =
   "https://www.instagram.com/artist.shaily.verma?igsh=a3ViZzhscDl1czV4&utm_source=qr";
@@ -36,6 +37,7 @@ const ContactSection = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Info */}
+          <RevealOnScroll>
           <div>
             <span className="font-body text-sm font-medium text-primary tracking-wider uppercase">
               Get in Touch
@@ -105,9 +107,11 @@ const ContactSection = () => {
               </div>
             </div>
           </div>
+          </RevealOnScroll>
 
           {/* Contact Form */}
-          <div className="bg-card p-8 rounded-2xl shadow-elevated">
+          <RevealOnScroll delayMs={80}>
+          <div className="bg-card p-8 rounded-2xl shadow-elevated transition-shadow duration-700 ease-out hover:shadow-elevated">
             <h3 className="font-display text-2xl font-semibold text-foreground mb-6">
               Send a Message
             </h3>
@@ -170,6 +174,7 @@ const ContactSection = () => {
               </Button>
             </form>
           </div>
+          </RevealOnScroll>
         </div>
       </div>
     </section>

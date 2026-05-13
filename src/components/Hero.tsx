@@ -8,11 +8,11 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center pt-20">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 hero-bg-animate">
         <img
           src="/assets/hero-art-studio.jpg"
           alt="Shaily Verma's Art Studio"
-          className="w-full h-full object-cover"
+          className="w-full h-full min-h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-background/30" />
       </div>
