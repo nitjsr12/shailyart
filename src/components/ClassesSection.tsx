@@ -7,6 +7,7 @@ import { Star, Quote, Send, Image as ImageIcon } from "lucide-react";
 
 import { homepageGoogleReviewHighlights } from "@/data/googleReviews";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
+import { SmoothImage } from "@/components/SmoothImage";
 
 const classHighlights = [
   { label: "Video Lessons", value: "50+" },
@@ -162,10 +163,12 @@ const ClassesSection = ({
                 <h3 className="font-display text-2xl font-semibold text-center text-foreground">
                   Student Work & Workshops
                 </h3>
-                <img
+                <SmoothImage
                   src="/assets/class-recording.jpg"
                   alt="Art class in session and student work"
-                  className="rounded-2xl shadow-elevated w-full object-cover aspect-video transition-transform duration-image ease-out hover:scale-[1.02]"
+                  loadEffect="blur-scale"
+                  containerClassName="w-full overflow-hidden rounded-2xl shadow-elevated aspect-video"
+                  className="h-full w-full object-cover transition-transform duration-image ease-out hover:scale-[1.02]"
                 />
                 <p className="text-center text-sm text-muted-foreground flex items-center justify-center gap-2">
                   <ImageIcon className="h-4 w-4" />

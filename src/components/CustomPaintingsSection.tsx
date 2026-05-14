@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
+import { SmoothImage } from "@/components/SmoothImage";
 
 const WHATSAPP_E164 = "919990173104";
 
@@ -98,10 +99,12 @@ const CustomPaintingsSection = () => {
                         index === 0 ? "col-span-2 aspect-video" : "aspect-square"
                       }`}
                     >
-                      <img
+                      <SmoothImage
                         src={painting.image}
                         alt={painting.title}
-                        className="w-full h-full object-cover transition-transform duration-image ease-out group-hover:scale-[1.03]"
+                        loadEffect="blur-scale"
+                        containerClassName="absolute inset-0 min-h-full min-w-full"
+                        className="h-full w-full object-cover transition-transform duration-image ease-out group-hover:scale-[1.03]"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent transition-opacity duration-500" />
                       <p className="absolute bottom-4 left-4 font-display text-lg text-background">

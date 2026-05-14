@@ -3,18 +3,22 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
+import { SmoothImage } from "@/components/SmoothImage";
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center pt-20">
       {/* Background Image */}
       <div className="absolute inset-0 z-0 hero-bg-animate">
-        <img
-          src="/assets/hero-art-studio.jpg"
-          alt="Shaily Verma's Art Studio"
-          className="w-full h-full min-h-full object-cover"
+        <SmoothImage
+          priority
+          loadEffect="blur"
+          src="/assets/hero-shaily-studio.png"
+          alt="Shaily Verma seated in a bright studio with a gallery wall of framed bird illustrations"
+          containerClassName="absolute inset-0 h-full w-full min-h-full"
+          className="h-full w-full min-h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-background/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/65 to-background/25" />
       </div>
 
       {/* Content */}
@@ -24,7 +28,7 @@ const Hero = () => {
             Welcome to the Studio
           </span>
           
-          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold text-foreground leading-tight mb-6 opacity-0 animate-fade-in-up stagger-2">
+          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold text-foreground leading-tight mb-6 animate-headline-reveal">
             Art that Speaks
             <span className="block text-primary italic">to Your Soul</span>
           </h1>
