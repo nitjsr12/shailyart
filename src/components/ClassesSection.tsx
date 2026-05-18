@@ -166,6 +166,7 @@ const ClassesSection = ({
                 <SmoothImage
                   src="/assets/class-recording.jpg"
                   alt="Art class in session and student work"
+                  eager
                   loadEffect="blur-scale"
                   containerClassName="w-full overflow-hidden rounded-2xl shadow-elevated aspect-video"
                   className="h-full w-full object-cover transition-transform duration-image ease-out hover:scale-[1.02]"

@@ -8,22 +8,22 @@ export default function Gallery() {
     <main className="min-h-screen">
       <Navbar />
       
-      <section className="pt-32 pb-12">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <span className="font-body text-sm font-medium text-primary tracking-wider uppercase">
-            Art Collection
+      <section className="border-b border-border/40 bg-gradient-to-b from-secondary/40 to-background pt-28 pb-10 md:pt-32 md:pb-12">
+        <div className="container mx-auto max-w-3xl px-4 text-center lg:px-8">
+          <span className="font-body text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+            Studio
           </span>
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mt-2">
-            Our Gallery
+          <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight text-foreground md:text-5xl lg:text-6xl">
+            Gallery
           </h1>
-          <p className="font-body text-muted-foreground mt-4 max-w-2xl mx-auto">
-            Browse our complete collection of original paintings. Each piece is a unique 
-            creation ready to bring beauty and inspiration to your space.
+          <p className="mt-4 font-body text-muted-foreground md:text-lg">
+            Shaily Verma with original canvas work — devotional art, portraits, and commissions
+            photographed in the studio.
           </p>
         </div>
       </section>
 
-      <GallerySection />
+      <GallerySection variant="full" />
       <CustomPaintingsSection />
       <Footer />
     </main>

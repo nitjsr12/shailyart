@@ -102,6 +102,7 @@ const CustomPaintingsSection = () => {
                       <SmoothImage
                         src={painting.image}
                         alt={painting.title}
+                        eager
                         loadEffect="blur-scale"
                         containerClassName="absolute inset-0 min-h-full min-w-full"
                         className="h-full w-full object-cover transition-transform duration-image ease-out group-hover:scale-[1.03]"
