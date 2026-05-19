@@ -38,7 +38,7 @@ const ClassesSection = ({
     <section className="py-24 bg-background">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Section Header */}
-        <RevealOnScroll>
+        <RevealOnScroll variant="blur-up" duration="slow">
           <div className="text-center mb-16">
             <span className="font-body text-sm font-medium text-primary tracking-wider uppercase">
               Art Class - Creativity & Professional
@@ -53,7 +53,7 @@ const ClassesSection = ({
         </RevealOnScroll>
 
         {/* Stats */}
-        <RevealOnScroll delayMs={40}>
+        <RevealOnScroll delayMs={40} variant="scale-up">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
           {classHighlights.map((item, index) => (
             <div
@@ -73,7 +73,7 @@ const ClassesSection = ({
 
         {/* Info & Form */}
         <div className="grid lg:grid-cols-2 gap-12 mb-16 items-center">
-          <RevealOnScroll delayMs={60}>
+          <RevealOnScroll delayMs={60} variant="slide-right">
             <div>
             <h3 className="font-display text-3xl font-semibold text-foreground mb-6">
               Join Our Classes
@@ -127,7 +127,7 @@ const ClassesSection = ({
           </div>
           </RevealOnScroll>
 
-          <RevealOnScroll delayMs={90}>
+          <RevealOnScroll delayMs={90} variant="slide-left">
             <div className="relative space-y-6">
             {variant === "classesPage" ? (
               <>
@@ -164,10 +164,12 @@ const ClassesSection = ({
                   Student Work & Workshops
                 </h3>
                 <SmoothImage
-                  src="/assets/class-recording.jpg"
+                  src="/assets/shailart-students-collage.png"
                   alt="Art class in session and student work"
-                  eager
                   loadEffect="blur-scale"
+                  scrollReveal
+                  staggerMs={120}
+                  parallax
                   containerClassName="w-full overflow-hidden rounded-2xl shadow-elevated aspect-video"
                   className="h-full w-full object-cover transition-transform duration-image ease-out hover:scale-[1.02]"
                 />
@@ -182,14 +184,14 @@ const ClassesSection = ({
         </div>
 
         {/* Testimonials */}
-        <RevealOnScroll delayMs={50}>
+        <RevealOnScroll delayMs={50} variant="blur-up">
           <div>
             <h3 className="font-display text-3xl font-semibold text-foreground text-center mb-12">
               What Our Students Say
             </h3>
             <div className="grid md:grid-cols-3 gap-6">
               {homepageGoogleReviewHighlights.map((testimonial, index) => (
-                <RevealOnScroll key={index} delayMs={index * 70}>
+                <RevealOnScroll key={index} delayMs={index * 70} variant="scale-up">
                   <div className="bg-card p-6 rounded-xl shadow-soft hover:shadow-elevated transition-shadow duration-700 ease-out h-full">
                 <Quote className="h-8 w-8 text-accent/30 mb-4" />
                 <p className="font-body text-foreground mb-4">

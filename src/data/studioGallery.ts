@@ -43,12 +43,45 @@ export const studioGalleryItems: StudioGalleryItem[] = [
     title: "Lord Ganesha — circular canvas",
     category: "Devotional",
   },
+  {
+    id: "gallery-ganga-aarti",
+    image: "/assets/gallery-ganga-aarti.png",
+    title: "Ganga Aarti — Varanasi",
+    category: "Devotional",
+  },
+  {
+    id: "gallery-shiva-parivar",
+    image: "/assets/gallery-shiva-parivar.png",
+    title: "Shiva Parivar",
+    category: "Devotional",
+  },
+  {
+    id: "gallery-pichwai-cow-tree",
+    image: "/assets/gallery-pichwai-cow-tree.png",
+    title: "Pichwai — cow & tree",
+    category: "Devotional",
+  },
+  {
+    id: "gallery-bull-vibrant",
+    image: "/assets/gallery-bull-vibrant.png",
+    title: "Vibrant bull — canvas",
+    category: "Devotional",
+  },
+  {
+    id: "gallery-portrait-commission",
+    image: "/assets/gallery-portrait-commission.png",
+    title: "Mother & daughter — commission",
+    category: "Portrait",
+  },
+  {
+    id: "gallery-floral-large",
+    image: "/assets/gallery-floral-large.png",
+    title: "Large floral composition",
+    category: "Still Life",
+  },
 ];
 
 export const studioGalleryCategories = [
   "All",
   ...Array.from(new Set(studioGalleryItems.map((item) => item.category))),
 ];
-
-/** @deprecated Use studioGalleryItems */
-export const homepageGalleryItems = studioGalleryItems;

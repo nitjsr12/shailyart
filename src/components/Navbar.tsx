@@ -3,10 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ShoppingCart } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { useCart } from "@/context/CartContext";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -20,20 +19,17 @@ const navLinks = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-  const { totalItems, setIsCartOpen } = useCart();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
       <nav className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <span className="font-display text-2xl font-semibold text-foreground">
               Shaily <span className="text-primary">Verma</span>
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
@@ -51,41 +47,13 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Cart & CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              className="relative"
-              onClick={() => setIsCartOpen(true)}
-            >
-              <ShoppingCart className="h-5 w-5" />
-              {totalItems > 0 && (
-                <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center font-medium">
-                  {totalItems > 9 ? "9+" : totalItems}
-                </span>
-              )}
-            </Button>
             <Button variant="elegant" size="sm" asChild>
               <Link href="/classes">Book a Class</Link>
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="flex items-center gap-2 md:hidden">
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              className="relative"
-              onClick={() => setIsCartOpen(true)}
-            >
-              <ShoppingCart className="h-5 w-5" />
-              {totalItems > 0 && (
-                <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center font-medium">
-                  {totalItems > 9 ? "9+" : totalItems}
-                </span>
-              )}
-            </Button>
             <button
               className="p-2"
               onClick={() => setIsOpen(!isOpen)}
@@ -100,7 +68,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden pb-6 animate-fade-in">
             <div className="flex flex-col gap-4">

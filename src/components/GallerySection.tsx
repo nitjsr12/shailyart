@@ -25,9 +25,10 @@ type GalleryCardProps = {
   item: StudioGalleryItem;
   eager?: boolean;
   layout: "compact" | "showcase";
+  staggerMs?: number;
 };
 
-const GalleryCard = ({ item, eager, layout }: GalleryCardProps) => {
+const GalleryCard = ({ item, eager, layout, staggerMs = 0 }: GalleryCardProps) => {
   const isShowcase = layout === "showcase";
   const url = buildWhatsappUrl(item.title);
 
@@ -48,6 +49,9 @@ const GalleryCard = ({ item, eager, layout }: GalleryCardProps) => {
             eager={eager}
             fit={isShowcase ? "intrinsic" : "fill"}
             loadEffect="blur-scale"
+            scrollReveal={!eager}
+            staggerMs={staggerMs}
+            parallax={isShowcase}
             containerClassName={isShowcase ? undefined : "absolute inset-0 size-full"}
             className={cn(
               isShowcase ? "w-full" : "object-cover object-center",
@@ -115,7 +119,7 @@ const GallerySection = ({ variant = "full" }: GallerySectionProps) => {
 
       <div className="container relative z-10 mx-auto px-4 lg:px-8">
         {isHome && (
-          <RevealOnScroll>
+          <RevealOnScroll variant="blur-up" duration="slow">
             <div className="mx-auto mb-10 max-w-3xl text-center md:mb-14">
               <span className="inline-flex items-center rounded-full border border-primary/15 bg-primary/5 px-3 py-1 font-body text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
                 Collection
@@ -131,7 +135,7 @@ const GallerySection = ({ variant = "full" }: GallerySectionProps) => {
         )}
 
         {!isHome && (
-          <RevealOnScroll delayMs={30}>
+          <RevealOnScroll delayMs={30} variant="fade-up">
             <div className="mb-8 flex flex-wrap items-center justify-center gap-2 md:mb-10">
               {studioGalleryCategories.map((category) => {
                 const active = activeCategory === category;
@@ -156,19 +160,23 @@ const GallerySection = ({ variant = "full" }: GallerySectionProps) => {
           </RevealOnScroll>
         )}
 
-        <RevealOnScroll delayMs={isHome ? 40 : 20}>
-          <div
-            className={cn(
-              isHome
-                ? "grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
-                : "columns-1 sm:columns-2 lg:columns-3"
-            )}
-          >
-            {catalogItems.map((item, index) => (
-              <GalleryCard key={item.id} item={item} eager={index < 3} layout={layout} />
-            ))}
-          </div>
-        </RevealOnScroll>
+        <div
+          className={cn(
+            isHome
+              ? "grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
+              : "columns-1 sm:columns-2 lg:columns-3"
+          )}
+        >
+          {catalogItems.map((item, index) => (
+            <GalleryCard
+              key={item.id}
+              item={item}
+              eager={index < 3}
+              layout={layout}
+              staggerMs={index * 90}
+            />
+          ))}
+        </div>
 
         {catalogItems.length === 0 && (
           <p className="py-16 text-center font-body text-muted-foreground">
@@ -176,19 +184,22 @@ const GallerySection = ({ variant = "full" }: GallerySectionProps) => {
           </p>
         )}
 
-        <RevealOnScroll className="mt-20 md:mt-24">
+        <RevealOnScroll className="mt-20 md:mt-24" variant="blur-up">
           <div className="mx-auto mb-10 max-w-2xl text-center">
-            <h3 className="font-display text-2xl font-semibold text-foreground md:text-3xl">
-              Loved on Google
+            <span className="inline-flex items-center rounded-full border border-primary/15 bg-primary/5 px-3 py-1 font-body text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
+              Client Reviews
+            </span>
+            <h3 className="mt-4 font-display text-2xl font-semibold text-foreground md:text-3xl">
+              What Our Clients Say
             </h3>
             <p className="mt-3 font-body text-sm text-muted-foreground">
-              From collectors and students across mediums.
+              Real feedback from collectors and students who love our paintings and classes.
             </p>
           </div>
           <div className="grid gap-4 md:grid-cols-3">
             {paintingGoogleReviewHighlights.map((testimonial, index) => (
-              <RevealOnScroll key={`${testimonial.name}-${index}`} delayMs={index * 75}>
-                <div className="flex h-full flex-col rounded-2xl border border-border/40 bg-card p-5 shadow-sm">
+              <RevealOnScroll key={`${testimonial.name}-${index}`} delayMs={index * 75} variant="scale-up">
+                <div className="flex h-full flex-col rounded-2xl border border-border/40 bg-card p-5 shadow-sm transition-shadow duration-500 hover:shadow-elevated">
                   <Quote className="mb-3 h-6 w-6 text-primary/35" aria-hidden />
                   <p className="flex-1 font-body text-sm leading-relaxed text-foreground">
                     &ldquo;{testimonial.text}&rdquo;
@@ -211,7 +222,7 @@ const GallerySection = ({ variant = "full" }: GallerySectionProps) => {
         </RevealOnScroll>
 
         {isHome && (
-          <RevealOnScroll delayMs={60}>
+          <RevealOnScroll delayMs={60} variant="fade">
             <div className="mt-12 flex justify-center">
               <Button variant="outline" size="sm" className="rounded-full" asChild>
                 <Link href="/gallery" className="gap-2">

@@ -7,6 +7,7 @@ import {
   googleReviews,
 } from "@/data/googleReviews";
 import { Star, Quote, ExternalLink } from "lucide-react";
+import { RevealOnScroll } from "@/components/RevealOnScroll";
 
 export default function ReviewsPage() {
   return (
@@ -15,7 +16,7 @@ export default function ReviewsPage() {
 
       <section className="pt-32 pb-24">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-16">
+          <RevealOnScroll variant="blur-up" duration="slow" className="text-center mb-16">
             <span className="font-body text-sm font-medium text-primary tracking-wider uppercase">
               Customer Experiences
             </span>
@@ -41,13 +42,17 @@ export default function ReviewsPage() {
               <span>Read all reviews on Google</span>
               <ExternalLink className="h-4 w-4 text-muted-foreground shrink-0" aria-hidden />
             </a>
-          </div>
+          </RevealOnScroll>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {googleReviews.map((review, index) => (
-              <div
+              <RevealOnScroll
                 key={`${review.name}-${index}`}
-                className="bg-card p-8 rounded-2xl shadow-soft border border-border/50 hover:shadow-elevated transition-all duration-300 flex flex-col h-full"
+                delayMs={(index % 6) * 70}
+                variant="scale-up"
+              >
+              <div
+                className="bg-card p-8 rounded-2xl shadow-soft border border-border/50 hover:shadow-elevated transition-all duration-500 flex flex-col h-full"
               >
                 <div className="flex justify-between items-start mb-6">
                   <div className="flex items-center gap-3">
@@ -82,6 +87,7 @@ export default function ReviewsPage() {
                   {review.date}
                 </p>
               </div>
+              </RevealOnScroll>
             ))}
           </div>
         </div>

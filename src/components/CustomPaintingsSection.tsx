@@ -1,20 +1,25 @@
 "use client";
 
 import { useState } from "react";
-import { MessageCircle } from "lucide-react";
+import Link from "next/link";
+import { MessageCircle, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { SmoothImage } from "@/components/SmoothImage";
+import { studioGalleryItems } from "@/data/studioGallery";
 
 const WHATSAPP_E164 = "919990173104";
 
-const customPaintings = [
-  { id: 1, image: "/assets/painting-3.jpg", title: "Large Abstract Composition" },
-  { id: 2, image: "/assets/painting-5.jpg", title: "Custom Portrait Work" },
-];
+/** Featured studio shots for the custom commissions preview */
+const customPreviewItems = [
+  studioGalleryItems.find((i) => i.id === "gallery-ganga-aarti"),
+  studioGalleryItems.find((i) => i.id === "gallery-portrait-commission"),
+].filter((item): item is NonNullable<typeof item> => Boolean(item));
+
+const moreGalleryCount = Math.max(0, studioGalleryItems.length - customPreviewItems.length);
 
 const CustomPaintingsSection = () => {
   const [formData, setFormData] = useState({
@@ -72,7 +77,7 @@ const CustomPaintingsSection = () => {
     <section className="py-24 bg-secondary/30">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Section Header */}
-        <RevealOnScroll>
+        <RevealOnScroll variant="blur-up" duration="slow">
           <div className="text-center mb-16">
             <span className="font-body text-sm font-medium text-primary tracking-wider uppercase">
               Bespoke Art
@@ -89,37 +94,45 @@ const CustomPaintingsSection = () => {
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Gallery Preview */}
-          <RevealOnScroll delayMs={50}>
+          <RevealOnScroll delayMs={50} variant="slide-right">
             <div>
               <div className="grid grid-cols-2 gap-4">
-                {customPaintings.map((painting, index) => (
-                  <RevealOnScroll key={painting.id} delayMs={index * 70}>
+                {customPreviewItems.map((painting, index) => (
                     <div
-                      className={`group relative overflow-hidden rounded-xl shadow-soft ${
-                        index === 0 ? "col-span-2 aspect-video" : "aspect-square"
+                      key={painting.id}
+                      className={`group relative overflow-hidden rounded-xl shadow-soft ring-1 ring-border/40 ${
+                        index === 0 ? "col-span-2 aspect-[16/10]" : "aspect-square"
                       }`}
                     >
                       <SmoothImage
                         src={painting.image}
-                        alt={painting.title}
-                        eager
+                        alt={`${painting.title} — Shaily Verma with original artwork`}
+                        eager={index === 0}
                         loadEffect="blur-scale"
-                        containerClassName="absolute inset-0 min-h-full min-w-full"
-                        className="h-full w-full object-cover transition-transform duration-image ease-out group-hover:scale-[1.03]"
+                        scrollReveal={index > 0}
+                        staggerMs={index * 80}
+                        containerClassName="absolute inset-0 size-full"
+                        className="h-full w-full object-cover object-center transition-transform duration-image ease-out group-hover:scale-[1.03]"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent transition-opacity duration-500" />
-                      <p className="absolute bottom-4 left-4 font-display text-lg text-background">
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                      <p className="absolute bottom-4 left-4 right-4 font-display text-base text-white drop-shadow-sm md:text-lg">
                         {painting.title}
                       </p>
                     </div>
-                  </RevealOnScroll>
                 ))}
-                <RevealOnScroll delayMs={180}>
-                  <div className="aspect-square rounded-xl bg-muted flex items-center justify-center">
-                    <p className="font-body text-muted-foreground text-center px-4">
-                      + 8 more examples in full gallery
+                <RevealOnScroll delayMs={180} variant="scale-up">
+                  <Link
+                    href="/gallery"
+                    className="group flex aspect-square flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-primary/30 bg-card/80 p-4 text-center shadow-sm transition-all hover:border-primary/50 hover:bg-primary/5 hover:shadow-md"
+                  >
+                    <span className="font-display text-2xl font-semibold text-primary">
+                      +{moreGalleryCount}
+                    </span>
+                    <p className="font-body text-sm text-muted-foreground group-hover:text-foreground">
+                      more in full gallery
                     </p>
-                  </div>
+                    <ArrowUpRight className="h-4 w-4 text-primary opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </Link>
                 </RevealOnScroll>
               </div>
 
@@ -136,7 +149,7 @@ const CustomPaintingsSection = () => {
           </RevealOnScroll>
 
           {/* Inquiry Form */}
-          <RevealOnScroll delayMs={100}>
+          <RevealOnScroll delayMs={100} variant="slide-left">
             <div className="bg-card p-8 rounded-2xl shadow-elevated">
               <h3 className="font-display text-2xl font-semibold text-foreground mb-6">
                 Request Information

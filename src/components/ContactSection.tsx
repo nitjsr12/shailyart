@@ -37,7 +37,7 @@ const ContactSection = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Info */}
-          <RevealOnScroll>
+          <RevealOnScroll variant="slide-right">
           <div>
             <span className="font-body text-sm font-medium text-primary tracking-wider uppercase">
               Get in Touch
@@ -110,7 +110,7 @@ const ContactSection = () => {
           </RevealOnScroll>
 
           {/* Contact Form */}
-          <RevealOnScroll delayMs={80}>
+          <RevealOnScroll delayMs={80} variant="slide-left">
           <div className="bg-card p-8 rounded-2xl shadow-elevated transition-shadow duration-700 ease-out hover:shadow-elevated">
             <h3 className="font-display text-2xl font-semibold text-foreground mb-6">
               Send a Message
