@@ -1,183 +1,85 @@
 "use client";
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { toast } from "sonner";
-import { Mail, Phone, MapPin, Send, Instagram } from "lucide-react";
+import { Mail, Phone, MapPin, Instagram } from "lucide-react";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 
 const INSTAGRAM_URL =
   "https://www.instagram.com/artist.shaily.verma?igsh=a3ViZzhscDl1czV4&utm_source=qr";
 
+const EMAIL = "Trendyartbyshaily@gmail.com";
+
 const ContactSection = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    
-    toast.success("Thank you for your message! We'll get back to you soon.");
-    setFormData({ name: "", email: "", subject: "", message: "" });
-    setIsSubmitting(false);
-  };
-
   return (
     <section className="py-24 bg-secondary/30">
       <div className="container mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
-          <RevealOnScroll variant="slide-right">
-          <div>
-            <span className="font-body text-sm font-medium text-primary tracking-wider uppercase">
+        <RevealOnScroll variant="slide-right">
+          <div className="mx-auto max-w-2xl">
+            <span className="font-body text-sm font-medium uppercase tracking-wider text-primary">
               Get in Touch
             </span>
-            <h2 className="font-display text-4xl md:text-5xl font-semibold text-foreground mt-2 mb-6">
-              Let's Create
+            <h2 className="mt-2 mb-6 font-display text-4xl font-semibold text-foreground md:text-5xl">
+              Let&apos;s Create
               <span className="block text-primary italic">Together</span>
             </h2>
-            <p className="font-body text-muted-foreground mb-8">
-              Have questions about our paintings, classes, or custom commissions? 
-              We'd love to hear from you. Reach out and let's discuss how we can 
-              bring art into your life.
+            <p className="mb-8 font-body text-muted-foreground">
+              Have questions about our paintings, classes, or custom commissions? We&apos;d love to
+              hear from you. Reach out by email, phone, or Instagram.
             </p>
 
-            {/* Contact Details */}
-            <div className="space-y-6 mb-8">
+            <div className="mb-8 space-y-6">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
                   <Mail className="h-5 w-5 text-primary" />
                 </div>
                 <div>
                   <p className="font-body text-sm text-muted-foreground">Email</p>
-                  <p className="font-body font-medium text-foreground">
-                    hello@shailyverma.art
-                  </p>
+                  <a
+                    href={`mailto:${EMAIL}`}
+                    className="break-all font-body font-medium text-foreground transition-colors hover:text-primary"
+                  >
+                    {EMAIL}
+                  </a>
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
                   <Phone className="h-5 w-5 text-primary" />
                 </div>
                 <div>
                   <p className="font-body text-sm text-muted-foreground">Phone</p>
-                  <p className="font-body font-medium text-foreground">
+                  <a
+                    href="tel:+919990173104"
+                    className="font-body font-medium text-foreground transition-colors hover:text-primary"
+                  >
                     +91 99901 73104
-                  </p>
+                  </a>
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
                   <MapPin className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <p className="font-body text-sm text-muted-foreground">Studio</p>
-                  <p className="font-body font-medium text-foreground">
-                    New Delhi, India
-                  </p>
+                  <p className="font-body text-sm text-muted-foreground">Homebase Studio</p>
+                  <p className="font-body font-medium text-foreground">New Delhi, India</p>
                 </div>
               </div>
             </div>
 
-            {/* Social Links */}
             <div>
-              <p className="font-body text-sm text-muted-foreground mb-4">
-                Follow our journey
-              </p>
-              <div className="flex gap-4">
-                <a
-                  href={INSTAGRAM_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Shaily Verma on Instagram"
-                  className="w-10 h-10 rounded-full bg-foreground/5 hover:bg-foreground/10 flex items-center justify-center transition-colors"
-                >
-                  <Instagram className="h-5 w-5 text-foreground" />
-                </a>
-              </div>
+              <p className="mb-4 font-body text-sm text-muted-foreground">Follow our journey</p>
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Shaily Verma on Instagram"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-foreground/5 transition-colors hover:bg-foreground/10"
+              >
+                <Instagram className="h-5 w-5 text-foreground" />
+              </a>
             </div>
           </div>
-          </RevealOnScroll>
-
-          {/* Contact Form */}
-          <RevealOnScroll delayMs={80} variant="slide-left">
-          <div className="bg-card p-8 rounded-2xl shadow-elevated transition-shadow duration-700 ease-out hover:shadow-elevated">
-            <h3 className="font-display text-2xl font-semibold text-foreground mb-6">
-              Send a Message
-            </h3>
-
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <Input
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
-                  required
-                  className="bg-background"
-                />
-                <Input
-                  type="email"
-                  placeholder="Email Address"
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
-                  required
-                  className="bg-background"
-                />
-              </div>
-              <Input
-                placeholder="Subject"
-                value={formData.subject}
-                onChange={(e) =>
-                  setFormData({ ...formData, subject: e.target.value })
-                }
-                required
-                className="bg-background"
-              />
-              <Textarea
-                placeholder="Your message..."
-                rows={5}
-                value={formData.message}
-                onChange={(e) =>
-                  setFormData({ ...formData, message: e.target.value })
-                }
-                required
-                className="bg-background resize-none"
-              />
-              <RevealOnScroll variant="zoom-up" delayMs={40}>
-                <Button
-                  type="submit"
-                  variant="hero"
-                  className="w-full"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    "Sending..."
-                  ) : (
-                    <>
-                      Send Message
-                      <Send className="h-4 w-4" />
-                    </>
-                  )}
-                </Button>
-              </RevealOnScroll>
-            </form>
-          </div>
-          </RevealOnScroll>
-        </div>
+        </RevealOnScroll>
       </div>
     </section>
   );

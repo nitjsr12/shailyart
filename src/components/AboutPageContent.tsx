@@ -39,8 +39,9 @@ export function AboutPageContent() {
                   thousands of students across India.
                 </p>
                 <p>
-                  My specialty lies in acrylic painting, where I love exploring landscapes, florals,
-                  and abstract compositions. Each piece I create tells a story, captures an emotion,
+                  My specialty lies in acrylic painting, where I love exploring acrylic portraits on
+                  canvas, spiritual art, modern art, and abstract art. Each piece I create tells a
+                  story, captures an emotion,
                   or celebrates the beauty of everyday moments.
                 </p>
                 <p>
