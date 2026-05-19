@@ -7,6 +7,7 @@ export type RevealVariant =
   | "fade-up"
   | "blur-up"
   | "scale-up"
+  | "zoom-up"
   | "clip-up"
   | "slide-left"
   | "slide-right"
@@ -27,6 +28,7 @@ const variantClass: Record<RevealVariant, string> = {
   "fade-up": "reveal-variant-fade-up",
   "blur-up": "reveal-variant-blur-up",
   "scale-up": "reveal-variant-scale-up",
+  "zoom-up": "reveal-variant-zoom-up",
   "clip-up": "reveal-variant-clip-up",
   "slide-left": "reveal-variant-slide-left",
   "slide-right": "reveal-variant-slide-right",

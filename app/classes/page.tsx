@@ -4,11 +4,11 @@ import ClassesSection from "@/components/ClassesSection";
 
 export default function Classes() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-x-hidden">
       <Navbar />
 
       <section className="pt-32 pb-12">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
+        <div className="container mx-auto text-center">
           <span className="font-body text-sm font-medium text-primary tracking-wider uppercase">
             Learn Art Online
           </span>
@@ -23,7 +23,7 @@ export default function Classes() {
       </section>
 
       <section className="pb-16 bg-background">
-        <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
+        <div className="container mx-auto max-w-5xl">
           <div className="rounded-2xl overflow-hidden shadow-elevated border border-border/50 bg-card">
             <img
               src="/assets/shailart-students-collage.png"

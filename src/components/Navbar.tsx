@@ -22,7 +22,7 @@ const Navbar = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
-      <nav className="container mx-auto px-4 lg:px-8">
+      <nav className="container mx-auto">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center gap-2">
             <span className="font-display text-2xl font-semibold text-foreground">

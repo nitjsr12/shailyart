@@ -4,11 +4,11 @@ import ContactSection from "@/components/ContactSection";
 
 export default function Contact() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-x-hidden">
       <Navbar />
       
       <section className="pt-32 pb-12">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
+        <div className="container mx-auto text-center">
           <span className="font-body text-sm font-medium text-primary tracking-wider uppercase">
             Contact Us
           </span>

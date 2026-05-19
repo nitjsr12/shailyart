@@ -34,7 +34,7 @@ const ContactSection = () => {
 
   return (
     <section className="py-24 bg-secondary/30">
-      <div className="container mx-auto px-4 lg:px-8">
+      <div className="container mx-auto">
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Info */}
           <RevealOnScroll variant="slide-right">
@@ -157,21 +157,23 @@ const ContactSection = () => {
                 required
                 className="bg-background resize-none"
               />
-              <Button
-                type="submit"
-                variant="hero"
-                className="w-full"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? (
-                  "Sending..."
-                ) : (
-                  <>
-                    Send Message
-                    <Send className="h-4 w-4" />
-                  </>
-                )}
-              </Button>
+              <RevealOnScroll variant="zoom-up" delayMs={40}>
+                <Button
+                  type="submit"
+                  variant="hero"
+                  className="w-full"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    "Sending..."
+                  ) : (
+                    <>
+                      Send Message
+                      <Send className="h-4 w-4" />
+                    </>
+                  )}
+                </Button>
+              </RevealOnScroll>
             </form>
           </div>
           </RevealOnScroll>

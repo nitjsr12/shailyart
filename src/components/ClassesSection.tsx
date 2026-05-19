@@ -36,7 +36,7 @@ const ClassesSection = ({
 
   return (
     <section className="py-24 bg-background">
-      <div className="container mx-auto px-4 lg:px-8">
+      <div className="container mx-auto">
         {/* Section Header */}
         <RevealOnScroll variant="blur-up" duration="slow">
           <div className="text-center mb-16">
@@ -118,10 +118,12 @@ const ClassesSection = ({
                   required
                   className="bg-background"
                 />
-                <Button type="submit" variant="hero" className="w-full">
-                  Inquire on WhatsApp
-                  <Send className="h-4 w-4 ml-2" />
-                </Button>
+                <RevealOnScroll variant="zoom-up" delayMs={40}>
+                  <Button type="submit" variant="hero" className="w-full">
+                    Inquire on WhatsApp
+                    <Send className="h-4 w-4 ml-2" />
+                  </Button>
+                </RevealOnScroll>
               </form>
             </div>
           </div>
@@ -168,8 +170,8 @@ const ClassesSection = ({
                   alt="Art class in session and student work"
                   loadEffect="blur-scale"
                   scrollReveal
-                  staggerMs={120}
-                  parallax
+                  staggerMs={60}
+                  parallax={false}
                   containerClassName="w-full overflow-hidden rounded-2xl shadow-elevated aspect-video"
                   className="h-full w-full object-cover transition-transform duration-image ease-out hover:scale-[1.02]"
                 />

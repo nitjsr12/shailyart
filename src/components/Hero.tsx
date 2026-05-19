@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import { SmoothImage } from "@/components/SmoothImage";
+import { RevealOnScroll } from "@/components/RevealOnScroll";
 
 const Hero = () => {
   return (
@@ -22,13 +23,13 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 lg:px-8 relative z-10">
+      <div className="container mx-auto relative z-10">
         <div className="max-w-2xl">
           <span className="inline-block font-body text-sm font-medium text-primary mb-4 tracking-wider uppercase opacity-0 animate-fade-in-up stagger-1">
             Welcome to the Studio
           </span>
           
-          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold text-foreground leading-tight mb-6 animate-headline-reveal">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-foreground leading-tight mb-6 animate-headline-reveal">
             Art that Speaks
             <span className="block text-primary italic">to Your Soul</span>
           </h1>
@@ -38,34 +39,38 @@ const Hero = () => {
             expert-led courses, and transform your space with handcrafted masterpieces.
           </p>
 
-          <div className="flex flex-wrap gap-4 opacity-0 animate-fade-in-up stagger-4">
-            <Button variant="hero" size="xl" className="group" asChild>
-              <Link href="/gallery">
-                Explore Gallery
-                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Button>
-            <Button variant="elegant" size="xl" className="group" asChild>
-              <Link href="/classes">
-                <Play className="h-5 w-5" />
-                Watch Classes
-              </Link>
-            </Button>
+          <div className="flex flex-wrap gap-4">
+            <RevealOnScroll variant="zoom-up" delayMs={0}>
+              <Button variant="hero" size="xl" className="group" asChild>
+                <Link href="/gallery">
+                  Explore Gallery
+                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </Button>
+            </RevealOnScroll>
+            <RevealOnScroll variant="zoom-up" delayMs={80}>
+              <Button variant="elegant" size="xl" className="group" asChild>
+                <Link href="/classes">
+                  <Play className="h-5 w-5" />
+                  Watch Classes
+                </Link>
+              </Button>
+            </RevealOnScroll>
           </div>
 
           {/* Stats */}
-          <div className="flex gap-8 mt-12 pt-8 border-t border-border/50 opacity-0 animate-fade-in-up stagger-5">
-            <div>
-              <p className="font-display text-3xl font-semibold text-foreground">500+</p>
-              <p className="font-body text-sm text-muted-foreground">Original Paintings</p>
+          <div className="grid grid-cols-3 gap-3 sm:flex sm:gap-8 mt-12 pt-8 border-t border-border/50 opacity-0 animate-fade-in-up stagger-5">
+            <div className="min-w-0 text-center sm:text-left">
+              <p className="font-display text-xl sm:text-3xl font-semibold text-foreground">500+</p>
+              <p className="font-body text-[11px] sm:text-sm text-muted-foreground leading-snug">Original Paintings</p>
             </div>
-            <div>
-              <p className="font-display text-3xl font-semibold text-foreground">1000+</p>
-              <p className="font-body text-sm text-muted-foreground">Happy Students</p>
+            <div className="min-w-0 text-center sm:text-left">
+              <p className="font-display text-xl sm:text-3xl font-semibold text-foreground">1000+</p>
+              <p className="font-body text-[11px] sm:text-sm text-muted-foreground leading-snug">Happy Students</p>
             </div>
-            <div>
-              <p className="font-display text-3xl font-semibold text-foreground">15+</p>
-              <p className="font-body text-sm text-muted-foreground">Years Experience</p>
+            <div className="min-w-0 text-center sm:text-left">
+              <p className="font-display text-xl sm:text-3xl font-semibold text-foreground">15+</p>
+              <p className="font-body text-[11px] sm:text-sm text-muted-foreground leading-snug">Years Experience</p>
             </div>
           </div>
         </div>

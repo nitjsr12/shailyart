@@ -22,7 +22,7 @@ const footerLinks = {
 const Footer = () => {
   return (
     <footer className="bg-foreground text-background">
-      <div className="container mx-auto px-4 lg:px-8 py-16">
+      <div className="container mx-auto py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">

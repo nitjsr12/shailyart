@@ -4,7 +4,7 @@ import { AboutPageContent } from "@/components/AboutPageContent";
 
 export default function About() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-x-hidden">
       <Navbar />
       <AboutPageContent />
       <Footer />

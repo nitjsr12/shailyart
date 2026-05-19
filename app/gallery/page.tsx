@@ -5,11 +5,11 @@ import CustomPaintingsSection from "@/components/CustomPaintingsSection";
 
 export default function Gallery() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-x-hidden">
       <Navbar />
       
       <section className="border-b border-border/40 bg-gradient-to-b from-secondary/40 to-background pt-28 pb-10 md:pt-32 md:pb-12">
-        <div className="container mx-auto max-w-3xl px-4 text-center lg:px-8">
+        <div className="container mx-auto max-w-3xl text-center">
           <span className="font-body text-xs font-semibold uppercase tracking-[0.2em] text-primary">
             Studio
           </span>

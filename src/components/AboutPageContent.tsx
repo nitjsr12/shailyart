@@ -21,7 +21,7 @@ const values = [
 export function AboutPageContent() {
   return (
     <section className="pt-32 pb-24">
-      <div className="container mx-auto px-4 lg:px-8">
+      <div className="container mx-auto">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <RevealOnScroll variant="slide-right" duration="slow">
             <div>
@@ -63,7 +63,7 @@ export function AboutPageContent() {
                 className="h-full w-full object-cover"
               />
               <RevealOnScroll variant="scale-up" delayMs={200}>
-                <div className="absolute -bottom-6 -left-6 rounded-xl bg-card p-6 shadow-elevated">
+                <div className="absolute bottom-4 left-4 rounded-xl bg-card p-4 shadow-elevated sm:-bottom-6 sm:left-0 sm:p-6 md:-left-4">
                   <p className="font-display text-3xl font-semibold text-primary">15+</p>
                   <p className="font-body text-sm text-muted-foreground">Years of Experience</p>
                 </div>

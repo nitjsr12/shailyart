@@ -75,7 +75,7 @@ const CustomPaintingsSection = () => {
 
   return (
     <section className="py-24 bg-secondary/30">
-      <div className="container mx-auto px-4 lg:px-8">
+      <div className="container mx-auto">
         {/* Section Header */}
         <RevealOnScroll variant="blur-up" duration="slow">
           <div className="text-center mb-16">
@@ -110,7 +110,7 @@ const CustomPaintingsSection = () => {
                         eager={index === 0}
                         loadEffect="blur-scale"
                         scrollReveal={index > 0}
-                        staggerMs={index * 80}
+                        staggerMs={index * 40}
                         containerClassName="absolute inset-0 size-full"
                         className="h-full w-full object-cover object-center transition-transform duration-image ease-out group-hover:scale-[1.03]"
                       />
@@ -200,34 +200,36 @@ const CustomPaintingsSection = () => {
                 />
               </div>
 
-              <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 pt-2">
-                <Button
-                  type="button"
-                  variant="hero"
-                  className="flex-1 min-w-[8rem]"
-                  onClick={() => sendFormToWhatsApp("order")}
-                >
-                  Order Now
-                </Button>
-                <Button
-                  type="button"
-                  variant="elegant"
-                  className="flex-1 min-w-[8rem]"
-                  onClick={(e) => handleSubmit(e, "customize")}
-                >
-                  Customize
-                </Button>
-                <Button
-                  type="button"
-                  variant="outline"
-                  className="flex-1 min-w-[8rem] border-primary text-primary hover:bg-primary/10"
-                  onClick={() => sendFormToWhatsApp("inquiry")}
-                  aria-label="Send form details on WhatsApp"
-                >
-                  <MessageCircle className="h-4 w-4 mr-2 shrink-0" />
-                  WhatsApp
-                </Button>
-              </div>
+              <RevealOnScroll variant="zoom-up" delayMs={60}>
+                <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap">
+                  <Button
+                    type="button"
+                    variant="hero"
+                    className="flex-1 min-w-[8rem]"
+                    onClick={() => sendFormToWhatsApp("order")}
+                  >
+                    Order Now
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="elegant"
+                    className="flex-1 min-w-[8rem]"
+                    onClick={(e) => handleSubmit(e, "customize")}
+                  >
+                    Customize
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="flex-1 min-w-[8rem] border-primary text-primary hover:bg-primary/10"
+                    onClick={() => sendFormToWhatsApp("inquiry")}
+                    aria-label="Send form details on WhatsApp"
+                  >
+                    <MessageCircle className="h-4 w-4 mr-2 shrink-0" />
+                    WhatsApp
+                  </Button>
+                </div>
+              </RevealOnScroll>
             </form>
 
             <p className="font-body text-xs text-muted-foreground mt-4 text-center">

@@ -11,11 +11,11 @@ import { RevealOnScroll } from "@/components/RevealOnScroll";
 
 export default function ReviewsPage() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen overflow-x-hidden bg-background">
       <Navbar />
 
       <section className="pt-32 pb-24">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="container mx-auto">
           <RevealOnScroll variant="blur-up" duration="slow" className="text-center mb-16">
             <span className="font-body text-sm font-medium text-primary tracking-wider uppercase">
               Customer Experiences

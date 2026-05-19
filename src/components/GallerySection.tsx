@@ -51,7 +51,7 @@ const GalleryCard = ({ item, eager, layout, staggerMs = 0 }: GalleryCardProps) =
             loadEffect="blur-scale"
             scrollReveal={!eager}
             staggerMs={staggerMs}
-            parallax={isShowcase}
+            parallax={false}
             containerClassName={isShowcase ? undefined : "absolute inset-0 size-full"}
             className={cn(
               isShowcase ? "w-full" : "object-cover object-center",
@@ -117,7 +117,7 @@ const GallerySection = ({ variant = "full" }: GallerySectionProps) => {
         aria-hidden
       />
 
-      <div className="container relative z-10 mx-auto px-4 lg:px-8">
+      <div className="container relative z-10 mx-auto">
         {isHome && (
           <RevealOnScroll variant="blur-up" duration="slow">
             <div className="mx-auto mb-10 max-w-3xl text-center md:mb-14">
@@ -163,8 +163,8 @@ const GallerySection = ({ variant = "full" }: GallerySectionProps) => {
         <div
           className={cn(
             isHome
-              ? "grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
-              : "columns-1 sm:columns-2 lg:columns-3"
+              ? "grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3"
+              : "columns-1 gap-4 sm:columns-2 lg:columns-3"
           )}
         >
           {catalogItems.map((item, index) => (
@@ -173,7 +173,7 @@ const GallerySection = ({ variant = "full" }: GallerySectionProps) => {
               item={item}
               eager={index < 3}
               layout={layout}
-              staggerMs={index * 90}
+              staggerMs={Math.min(index * 40, 160)}
             />
           ))}
         </div>
@@ -222,7 +222,7 @@ const GallerySection = ({ variant = "full" }: GallerySectionProps) => {
         </RevealOnScroll>
 
         {isHome && (
-          <RevealOnScroll delayMs={60} variant="fade">
+          <RevealOnScroll delayMs={60} variant="zoom-up">
             <div className="mt-12 flex justify-center">
               <Button variant="outline" size="sm" className="rounded-full" asChild>
                 <Link href="/gallery" className="gap-2">
