@@ -8,12 +8,6 @@ export type StudioGalleryItem = {
 
 export const studioGalleryItems: StudioGalleryItem[] = [
   {
-    id: "showcase-shirdi-sai",
-    image: "/assets/homepage-shirdi-sai.png",
-    title: "Shirdi Sai Baba",
-    category: "Devotional",
-  },
-  {
     id: "showcase-ganesha-artist",
     image: "/assets/homepage-ganesha-artist-saree.png",
     title: "Lord Ganesha — studio piece",
