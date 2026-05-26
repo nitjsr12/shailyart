@@ -47,9 +47,12 @@ const Navbar = () => {
             ))}
           </div>
 
-          <div className="hidden md:flex items-center gap-4">
-            <Button variant="elegant" size="sm" asChild>
-              <Link href="/classes">Book a Class</Link>
+          <div className="hidden md:flex items-center gap-3">
+            <Button variant="outline" size="sm" className="rounded-full border-primary/40" asChild>
+              <Link href="/gallery">Order for Painting</Link>
+            </Button>
+            <Button variant="hero" size="sm" className="rounded-full px-5 shadow-glow" asChild>
+              <Link href="/classes">Join Class</Link>
             </Button>
           </div>
 
@@ -86,10 +89,15 @@ const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
-              <div className="pt-4 border-t border-border">
-                <Button variant="elegant" size="sm" className="w-full" asChild>
+              <div className="flex flex-col gap-3 border-t border-border pt-4">
+                <Button variant="outline" size="sm" className="w-full rounded-full border-primary/40" asChild>
+                  <Link href="/gallery" onClick={() => setIsOpen(false)}>
+                    Order for Painting
+                  </Link>
+                </Button>
+                <Button variant="hero" size="sm" className="w-full rounded-full shadow-glow" asChild>
                   <Link href="/classes" onClick={() => setIsOpen(false)}>
-                    Book a Class
+                    Join Class
                   </Link>
                 </Button>
               </div>

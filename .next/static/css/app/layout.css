@@ -1505,6 +1505,9 @@ video {
 .border-primary\/30 {
   border-color: hsl(var(--primary) / 0.3);
 }
+.border-primary\/40 {
+  border-color: hsl(var(--primary) / 0.4);
+}
 .border-transparent {
   border-color: transparent;
 }
@@ -1672,6 +1675,10 @@ video {
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
+}
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 .px-6 {
   padding-left: 1.5rem;
@@ -2041,6 +2048,9 @@ video {
   }
 .shadow-elevated {
     box-shadow: var(--shadow-elevated);
+  }
+.shadow-glow {
+    box-shadow: var(--shadow-glow);
   }
 
 /* Smooth image rendering when scaling */

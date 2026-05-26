@@ -55,9 +55,27 @@ const classGoogleReviews: GoogleReview[] = [
 /** Portraits, canvas work, and collecting — used on the gallery / paintings section. */
 export const paintingGoogleReviewHighlights: GoogleReview[] = [
   {
+    name: "aakriti gahlawat",
+    date: "1 week ago",
+    text: "Absolutely loved this artwork. The painting has a very powerful yet peaceful presence, and the texture, colors, and detailing make it look truly premium. It adds a modern artistic touch while still keeping the spiritual essence alive. Beautiful craftsmanship and a perfect statement piece for interiors. Highly recommended!",
+    rating: 5,
+  },
+  {
+    name: "The Jadeja",
+    date: "1 year ago",
+    text: "I am beyond thrilled with the painting of my grandparents! The artist has beautifully captured their essence and brought their warmth and love to life on canvas. This artwork holds deep emotional value for me and my family, and it's become a treasured piece in our home. Every time I look at it, it feels like they are right here with us. Thank you for creating something so meaningful and special—we will cherish it forever!",
+    rating: 5,
+  },
+  {
     name: "Rohith Krishna T J",
     date: "2 years ago",
     text: "I reached out to Shaily Ma'am for a canvas painting portrait to gift my friend, and the painting was absolutely stunning. The portrait painting created was beyond my expectations. My friend loved it, and I couldn't have asked for a more perfect gift. The attention to detail and dedication truly shine through. I appreciate her patience in answering all my questions and her incredible talent. I look forward to collaborating with her again on future projects. Highly recommend!",
+    rating: 5,
+  },
+  {
+    name: "S s",
+    date: "2 years ago",
+    text: "I reached out to Shaily for working on a painting for me. I didn't have an exact image of the painting but just a few ideas from different sources. I conveyed the ideas to Shaily and within a few weeks, she brought the ideas into life and the painting was incredible (beyond words). It was more than what I was imagining it to be, it was beautifully epic, and filled my heart with joy and exuberance. Thank you Shaily. You are very talented and an artist with vision. Thank you for your work and effort, and extending your services through your creativity.",
     rating: 5,
   },
   {

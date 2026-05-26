@@ -68,6 +68,18 @@ export const studioGalleryItems: StudioGalleryItem[] = [
     category: "Portrait",
   },
   {
+    id: "gallery-portrait-abstract-duo",
+    image: "/assets/gallery-portrait-abstract-duo.png",
+    title: "Abstract dual portrait — acrylic on canvas",
+    category: "Portrait",
+  },
+  {
+    id: "gallery-portrait-elderly-couple",
+    image: "/assets/gallery-portrait-elderly-couple.png",
+    title: "Elderly couple — gold-framed commission",
+    category: "Portrait",
+  },
+  {
     id: "gallery-floral-large",
     image: "/assets/gallery-floral-large.png",
     title: "Large floral composition",
