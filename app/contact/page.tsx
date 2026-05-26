@@ -2,6 +2,11 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactSection from "@/components/ContactSection";
 
+export const metadata = {
+  title: "Contact Us — Order Painting or Join Classes",
+  description: "Get in touch with Shaily Verma Art Studio for custom painting orders, class enrollment, or any queries. WhatsApp or email us today.",
+};
+
 export default function Contact() {
   return (
     <main className="min-h-screen overflow-x-hidden">

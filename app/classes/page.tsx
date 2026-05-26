@@ -2,6 +2,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ClassesSection from "@/components/ClassesSection";
 
+export const metadata = {
+  title: "Online Drawing & Painting Classes",
+  description: "Learn acrylic, oil, watercolor & sketching online. Classes for beginners to advanced by Shaily Verma — 1000+ happy students across India & UK.",
+};
 export default function Classes() {
   return (
     <main className="min-h-screen overflow-x-hidden">

@@ -3,6 +3,11 @@ import Footer from "@/components/Footer";
 import GallerySection from "@/components/GallerySection";
 import CustomPaintingsSection from "@/components/CustomPaintingsSection";
 
+export const metadata = {
+  title: "Buy Original Canvas Paintings Online",
+  description: "Browse and order original devotional, portrait & custom paintings by Shaily Verma. Handcrafted canvas art — delivered across India.",
+};
+
 export default function Gallery() {
   return (
     <main className="min-h-screen overflow-x-hidden">
